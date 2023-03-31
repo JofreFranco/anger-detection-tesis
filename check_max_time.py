@@ -47,8 +47,4 @@ for file in files:
         center=True,
     )
     window_amounts.append((s.shape[1]))
-    pad = (0, 1)
-    out = torch.nn.functional.pad(torch.tensor(s), pad, "constant", 0)
-    print(s.shape)
-    print(out.shape)
-    break
+print(max(window_amounts))

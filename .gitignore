@@ -129,3 +129,7 @@ dmypy.json
 .pyre/
 
 .vscode/
+
+# Archivo de pruebas
+
+test.py

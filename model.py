@@ -29,6 +29,8 @@ if version.parse(torch.__version__) >= version.parse("1.6"):
 
 from torch.nn import CrossEntropyLoss
 
+# TODO Eliminar warnings
+
 
 def speech_file_to_array_fn(path):
     """Carga un audio y lo resamplea al sample rate del modelo"""
@@ -94,7 +96,7 @@ class Wav2Vec2ClassificationHead(nn.Module):
 
         features = self.pre_mean_features(features)
         hidden_states = self.pre_mean_wv2(hidden_states)
-
+        # TODO Activacion aca?
         hidden_states = torch.mean(hidden_states, dim=1)
         features = self.padded_mean(features, mask)
 
@@ -104,7 +106,7 @@ class Wav2Vec2ClassificationHead(nn.Module):
 
         x = self.dropout(x)
         x = self.dense(x)
-        x = torch.sigmoid(x)
+        x = torch.sigmoid(x)  # TODO chequear otras funciones de activacion
         x = self.dropout(x)
         x = self.out_proj(x)
         return x

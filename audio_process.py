@@ -6,7 +6,9 @@ from torch import tensor
 import Signal_Analysis.features.signal as sig
 import torch
 
-
+# TODO CACHE para optimizar el procesamiento, esta funcionando con cache en RAM
+# Hay que ver si sirve o si es mejor pasarlo a disco.
+# Tambien falta implementarlo aca. Primero hay que ver por que se llena la VRAM
 class AcousticFeatureExtractor:
 
     win_length = 320
@@ -64,6 +66,7 @@ class AcousticFeatureExtractor:
         return f0, f0_delta
 
     def get_hnr(self, y, sr):
+        # TODO Hacer un codigo para obtener el HNR
 
         hnr = sig.get_HNR(y, sr, min_pitch=125, periods_per_window=2.5)
         print(len(hnr))
