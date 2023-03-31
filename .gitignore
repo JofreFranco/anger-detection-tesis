@@ -133,3 +133,5 @@ dmypy.json
 # Archivo de pruebas
 
 test.py
+csv_files/
+IEMOCAP_mp3/
